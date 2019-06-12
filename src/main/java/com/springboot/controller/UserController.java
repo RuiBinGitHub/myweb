@@ -1,6 +1,8 @@
 package com.springboot.controller;
 
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
@@ -32,8 +34,24 @@ public class UserController {
 	/** 用户注册 */
 	@RequestMapping(value = "/logon", method = RequestMethod.POST)
 	public ModelAndView logon(User user) {
-
-		return null;
+		ModelAndView view = new ModelAndView("user/logon");
+		/** 验证登录账号 */
+		if (isExistName(user.getUsername())) {
+			view.addObject("tips", "*账号已经存在，请重新输入！");
+			return view;
+		}
+		/** 验证电子邮箱 */
+		if (isExistMail(user.getEmailbox())) {
+			view.addObject("tips", "*邮箱已经注册，请重新输入！");
+			return view;
+		}
+		/** 提交数据，完成注册 */
+		String date = AppUtils.getDate(null);
+		user.setRole("Role2");
+		user.setDate(date);
+		userBiz.insertUser(user);
+		view.setViewName("redirect:/user/completes");
+		return view;
 	}
 
 	/** 用户登录 */
@@ -53,7 +71,8 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = "/isexitsname")
+	/** 判断账号是否存在 */
+	@RequestMapping(value = "/isexitsname", method = RequestMethod.GET)
 	public boolean isExistName(String name) {
 		map = AppUtils.getMap("username", name);
 		if (userBiz.findInfoUser(map) == null)
@@ -61,7 +80,8 @@ public class UserController {
 		return true;
 	}
 
-	@RequestMapping(value = "/isexitsmail")
+	/** 判断邮箱是否存在 */
+	@RequestMapping(value = "/isexitsmail", method = RequestMethod.GET)
 	public boolean isExistMail(String mail) {
 		map = AppUtils.getMap("emailbox", mail);
 		if (userBiz.findInfoUser(map) == null)
@@ -69,13 +89,28 @@ public class UserController {
 		return true;
 	}
 
+	/** 修改密码 */
 	@RequestMapping(value = "/updatepass", method = RequestMethod.POST)
 	public boolean updatePass(String oldpass, String newpass) {
 		return false;
 	}
 
+	/** 修改邮箱 */
 	@RequestMapping(value = "/updatemail", method = RequestMethod.POST)
 	public boolean updateMail(String mail, String code) {
 		return false;
+	}
+
+	@RequestMapping(value = "/sendmail", method = RequestMethod.GET)
+	public String sendMail(String mail) {
+		String regs = "\\w+@(\\w+.)+[a-z]{2,3}";
+		Pattern pattern = Pattern.compile(regs);
+		Matcher matcher = pattern.matcher(mail);
+		String code = null;
+		if (matcher.matches()) {
+			code = 100000 + (int) (Math.random() * 899999) + "";
+			userBiz.sendMail(mail, code);
+		}
+		return code;
 	}
 }

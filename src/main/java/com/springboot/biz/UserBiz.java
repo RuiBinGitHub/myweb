@@ -21,4 +21,6 @@ public interface UserBiz {
 
 	public int getPages(Map<String, Object> map, int size);
 
+	public void sendMail(String mail, String code);
+
 }

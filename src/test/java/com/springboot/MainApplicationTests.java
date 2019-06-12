@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.springboot.biz.UserBiz;
-import com.springboot.util.AppUtils;
+import com.springboot.controller.UserController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -19,13 +19,14 @@ public class MainApplicationTests {
 	@Resource
 	private UserBiz userBiz;
 
-	private Map<String, Object> map = null;
+	@Resource
+	private UserController userController;
+	
+	public Map<String, Object> map = null;
 
 	@Test
 	public void contextLoads() {
-		map = AppUtils.getMap("name", null);
-		int pages = userBiz.getPages(map, 2);
-		System.out.println(pages);
+		System.out.println(userController.sendMail("919732942@qq.com"));
 	}
 
 }
