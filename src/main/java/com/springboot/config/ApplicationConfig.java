@@ -12,6 +12,7 @@ public class ApplicationConfig implements WebMvcConfigurer {
 		
 		registry.addViewController("user/logonview").setViewName("user/logonview");
 		registry.addViewController("user/loginview").setViewName("user/loginview");
+		registry.addViewController("user/resetview").setViewName("user/resetview");
 	}
 
 }

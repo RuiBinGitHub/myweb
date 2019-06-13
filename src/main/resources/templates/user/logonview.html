@@ -11,19 +11,18 @@
      -->
   </head>
   <body>
-  	<a id="result"></a>
     <form action="/login" method="post">
     <div id="main">
       <div id="title">用户注册</div>
       <div id="tips"></div>
-      <input type="text" name="username" value="" class="textbox" placeholder="请输入登录账号"/>
-      <input type="password" name="password" value="" class="textbox" placeholder="请输入登录密码"/>
-      <input type="password" name="password" value="" class="textbox" placeholder="请确认登录密码"/>
+      <input type="text" name="username" class="textbox" placeholder="请输入登录账号"/>
+      <input type="password" value="" class="textbox" placeholder="请输入登录密码"/>
+      <input type="password" value="" class="textbox" placeholder="请确认登录密码"/>
       <input type="text" name="emailbox" value="" class="textbox" placeholder="请输入电子邮箱"/>
-      <input type="text" id="code" placeholder="请确认验证码"/>
+      <input type="text" id="code" placeholder="请输入验证码"/>
       <input type="button" id="getcode" value="获取验证码"/>
-      <input type="button" value="登录" class="commit"/>
-      <a href="#" style="float:left;">立即登录</a>
+      <input type="button" value="注册" class="commit"/>
+      <span>已有账号</span><a href="loginview">立即登录</a>
     </div>
     </form>
   </body>

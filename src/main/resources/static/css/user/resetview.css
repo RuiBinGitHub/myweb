@@ -6,8 +6,8 @@ body {
 }
 #main {
     width:360px;
-    height:395px;
-    margin:15% auto;
+    height:520px;
+    margin:10% auto;
     background-color:#fff;
     border-radius:2px;
 }
@@ -36,54 +36,67 @@ body {
 .textbox {
 	width:298px;
 	height:40px;
-	margin-left:30px;
-	margin-bottom:30px;
 	font-size:16px;
-	text-indent:50px;
+	text-indent:10px;
 	font-family:"微软雅黑";
+	margin:0px 30px 20px 30px;
 	border:1px solid #D1D1D1;
 	float:left;
 }
-#main input[name=username] {
-	background: url("/web/img/user.png");
-	background-repeat:no-repeat;
+#code {
+	width:145px;
+	height:40px;
+	font-size:16px;
+	text-indent:10px;
+	font-family:"微软雅黑";
+	margin:0px 7px 20px 30px;
+	border:1px solid #D1D1D1;
+	float:left;
 }
-#main input[name=password] {
-	background: url("/web/img/pass.png");
-	background-repeat:no-repeat;
+#getcode {
+	width:145px;
+	height:44px;
+	color:#19B3EF;
+	font-size:16px;
+	margin-bottom:20px;
+	background-color:#ffffff;
+	border:1px solid #19B3EF;
+	float:left;
 }
-#main a {
-	color:#0dc2ff;
-	margin:0px 32px 10px 32px;
-	font-family:"Helvetica";
-	text-decoration:none;
+#getcode:hover {
+	color:#ffffff;
+	background-color:#19B3EF;
+	cursor:pointer;
 }
 .commit{
 	width:300px;
 	height:40px;
-	margin-left:30px;
-	margin-bottom:30px;
 	color:#ffffff;
 	font-size:18px;
-	background-color:#ff0000;
+	margin:0px 30px 20px 30px;
+	background-color:#19B3EF;
 	border:none;
 	float:left;
 }
 .commit:hover {
-	background-color:#ff4242;
+	background-color:#53c7f2;
+	cursor:pointer;
 }
-.span {
-	width:198px;
-	height:24px;
-	margin-left:32px;
+#main span {
 	color:#999999;
 	font-size:15px;
 	font-family:"微软雅黑";
-	line-height:24px;
+	margin-left:32px;
 	float:left;
 }
-#main img {
-	margin:0px 5px;
-	cursor:pointer;
+#main a {
+	margin-left:4px;
+	color:#0dc2ff;
+	font-size:15px;
+	font-family:"Helvetica";
+	text-decoration:none;
 	float:left;
+}
+#main a:visited {
+	color:#0dc2ff;
 }

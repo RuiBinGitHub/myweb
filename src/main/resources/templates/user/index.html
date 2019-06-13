@@ -3,8 +3,21 @@
   <head>
     <title>项目首页</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript">
+    	var count = 0;
+    	var source=new EventSource("/web/test/getdate");
+    	source.onerror = function (event) {
+    		console.log(event);
+        };
+    	source.onmessage = function(event)	{
+    		document.getElementById("result").innerHTML+=event.data + "<br>";
+    		if (++count > 5)
+    			source.close();
+    	};
+    </script>
   </head>
   <body>
-    <span th:text="info"></span>
+    <div id="result"></div>
   </body>
+
 </html>

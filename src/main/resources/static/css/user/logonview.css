@@ -25,71 +25,82 @@ body {
 }
 #tips {
 	width:300px;
-	height:20px;
-	margin:10px 30px;
+	height:40px;
+	margin:0px 30px;
 	color:#ff0000;
 	font-size:16px;
-	line-height:20px;
+	line-height:40px;
 	font-family:"微软雅黑";
 	float:left;
 }
 .textbox {
 	width:298px;
 	height:40px;
+	margin-left:30px;
+	margin-bottom:20px;
 	font-size:16px;
-	text-indent:10px;
+	text-indent:12px;
 	font-family:"微软雅黑";
-	margin:0px 30px 20px 30px;
 	border:1px solid #D1D1D1;
 	float:left;
 }
 #code {
 	width:145px;
 	height:40px;
+	margin-left:30px;
+	margin-right:7px;
+	margin-bottom:20px;
 	font-size:16px;
 	text-indent:10px;
 	font-family:"微软雅黑";
-	margin:0px 7px 0px 30px;
 	border:1px solid #D1D1D1;
 	float:left;
 }
 #getcode {
 	width:145px;
 	height:44px;
-	color:#ff0000;
+	margin-bottom:20px;
+	font-size:16px;
+	color:#5EA500;
 	font-size:16px;
 	background-color:#ffffff;
-	border:1px solid #ff0000;
+	border:1px solid #5EA500;
 	float:left;
 }
 #getcode:hover {
 	color:#ffffff;
-	background-color:#ff0000;
+	background-color:#5EA500;
 	cursor:pointer;
-}
-#getcode:ACTIVE {
-	border:1px solid #ff0000;
 }
 .commit{
 	width:300px;
 	height:40px;
-	margin-top:20px;
 	margin-left:30px;
+	margin-bottom:20px;
 	color:#ffffff;
 	font-size:18px;
-	background-color:#ff0000;
+	background-color:#5EA500;
 	border:none;
 	float:left;
 }
 .commit:hover {
-	background-color:#ff4242;
+	background-color:#78d000;
 	cursor:pointer;
+}
+#main span {
+	color:#999999;
+	font-size:15px;
+	font-family:"微软雅黑";
+	margin-left:32px;
+	float:left;
 }
 #main a {
 	color:#0dc2ff;
-	margin:20px 32px;
+	font-size:15px;
 	font-family:"Helvetica";
+	margin-left:4px;
 	text-decoration:none;
+	float:left;
 }
 #main a:visited {
 	color:#0dc2ff;

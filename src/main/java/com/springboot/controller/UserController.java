@@ -71,6 +71,16 @@ public class UserController {
 		}
 	}
 
+	/** 退出登录 */
+	@RequestMapping(value = "leave", method = RequestMethod.GET)
+	public ModelAndView leave() {
+		ModelAndView view = new ModelAndView();
+		view.setViewName("redirect:/user/login");
+		SecurityUtils.getSubject().logout();
+		// AppUtils.removeSession("user");
+		return view;
+	}
+
 	/** 判断账号是否存在 */
 	@RequestMapping(value = "/isexitsname", method = RequestMethod.GET)
 	public boolean isExistName(String name) {
@@ -89,6 +99,16 @@ public class UserController {
 		return true;
 	}
 
+	/** 判断账号和邮箱 */
+	@RequestMapping(value = "/checknamemail", method = RequestMethod.GET)
+	public boolean checkNameMail(String name, String mail) {
+		map = AppUtils.getMap("username", name, "emailbox", mail);
+		if (userBiz.findInfoUser(map) == null)
+			return false;
+		else
+			return true;
+	}
+
 	/** 修改密码 */
 	@RequestMapping(value = "/updatepass", method = RequestMethod.POST)
 	public boolean updatePass(String oldpass, String newpass) {
@@ -99,6 +119,24 @@ public class UserController {
 	@RequestMapping(value = "/updatemail", method = RequestMethod.POST)
 	public boolean updateMail(String mail, String code) {
 		return false;
+	}
+
+	/** 找回密码 */
+	@RequestMapping(value = "/resetpass", method = RequestMethod.POST)
+	public ModelAndView resetPass(String username, String password, String emailbox) {
+		ModelAndView view = new ModelAndView("user/resetpass");
+		map = AppUtils.getMap("username", username, "emailbox", emailbox);
+		User user = userBiz.findInfoUser(map);
+		if (StringUtils.isEmpty(user)) {
+			view.addObject("tips", "*账号和邮箱不匹配！");
+			view.addObject("username", username);
+			view.addObject("emailbox", emailbox);
+			return view;
+		}
+		view.setViewName("redirect:/success");
+		user.setPassword(password);
+		userBiz.updateUser(user);
+		return view;
 	}
 
 	@RequestMapping(value = "/sendmail", method = RequestMethod.GET)
