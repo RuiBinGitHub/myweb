@@ -1,6 +1,5 @@
 package com.springboot.controller;
 
-import java.io.IOException;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
 	@RequestMapping(value = "/getdate", produces = "text/event-stream;charset=UTF-8")
-	public String getDate(HttpServletResponse response) throws IOException {
+	public String getDate(HttpServletResponse response) {
 		String result = "data:" + new Date() + "\n\n";
 		return result;
 	}

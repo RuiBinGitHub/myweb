@@ -6,7 +6,7 @@ body {
 }
 #main {
     width:360px;
-    height:520px;
+    height:575px;
     margin:10% auto;
     background-color:#fff;
     border-radius:2px;
@@ -29,6 +29,7 @@ body {
 	margin:0px 30px;
 	color:#ff0000;
 	font-size:16px;
+	text-indent:10px;
 	line-height:40px;
 	font-family:"微软雅黑";
 	float:left;
@@ -56,7 +57,7 @@ body {
 	border:1px solid #D1D1D1;
 	float:left;
 }
-#getcode {
+#getBtn {
 	width:145px;
 	height:44px;
 	margin-bottom:20px;
@@ -67,7 +68,7 @@ body {
 	border:1px solid #5EA500;
 	float:left;
 }
-#getcode:hover {
+#getBtn:hover {
 	color:#ffffff;
 	background-color:#5EA500;
 	cursor:pointer;

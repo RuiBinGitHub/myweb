@@ -5,20 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="icon" type="image/x-icon" href="/web/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="/web/css/user/loginview.css"/>
-    <!-- 
     <script type="text/javascript" src="/web/js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="/web/js/user/login.js"></script>
-     -->
+    <script type="text/javascript" src="/web/js/user/loginview.js"></script>
   </head>
   <body>
-    <form action="/login" method="post">
+    <form action="/web/user/login" method="post">
     <div id="main">
       <div id="title">用户登录</div>
-      <div id="tips"></div>
-      <input type="text" name="username" value="" class="textbox" placeholder="请输入登录账号"/>
-      <input type="text" name="password" value="" class="textbox" placeholder="请输入登录密码"/>
-      <a href="logonview" style="float:left;">立即注册</a>
-      <a href="resetview" style="float:right;">忘记密码</a>
+      <div id="tips" th:text="${tips}"></div>
+      <input type="text" name="username" th:value="${username}" class="textbox" onkeyup="value=value.replace(/[\W]/g, '')"/>
+      <input type="text" name="password" th:value="${password}" class="textbox" onkeyup="value=value.replace(/[\W]/g, '')"/>
+      <a href="logonview" style="float:left;">立即注册</a><a href="resetview" style="float:right;">忘记密码</a>
       <input type="button" value="登录" class="commit"/>
       <span class="span">其他登录方式：</span>
       <img alt="登录" src="/web/img/login_icon1.png">

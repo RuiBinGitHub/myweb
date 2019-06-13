@@ -5,22 +5,21 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="icon" type="image/x-icon" href="/web/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="/web/css/user/logonview.css"/>
-    <!-- 
     <script type="text/javascript" src="/web/js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="/web/js/user/login.js"></script>
-     -->
+    <script type="text/javascript" src="/web/js/user/logonview.js"></script>
   </head>
   <body>
     <form action="/login" method="post">
     <div id="main">
       <div id="title">用户注册</div>
       <div id="tips"></div>
-      <input type="text" name="username" class="textbox" placeholder="请输入登录账号"/>
-      <input type="password" value="" class="textbox" placeholder="请输入登录密码"/>
-      <input type="password" value="" class="textbox" placeholder="请确认登录密码"/>
-      <input type="text" name="emailbox" value="" class="textbox" placeholder="请输入电子邮箱"/>
+      <input type="text" name="name" th:value="${user?.name}" class="textbox"/>
+      <input type="text" name="username" th:value="${user?.username}" class="textbox"/>
+      <input type="text" th:value="${user?.password}" class="textbox" onkeyup="value=value.replace(/[\W]/g, '')"/>
+      <input type="text" th:value="${user?.password}" class="textbox" onkeyup="value=value.replace(/[\W]/g, '')"/>
+      <input type="text" name="emailbox" th:value="${user?.emailbox}" class="textbox"/>
       <input type="text" id="code" placeholder="请输入验证码"/>
-      <input type="button" id="getcode" value="获取验证码"/>
+      <input type="button" id="getBtn" value="获取验证码"/>
       <input type="button" value="注册" class="commit"/>
       <span>已有账号</span><a href="loginview">立即登录</a>
     </div>

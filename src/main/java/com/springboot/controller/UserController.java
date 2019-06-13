@@ -58,15 +58,18 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView login(ServletRequest request, String username, String password) {
 		try {
-			ModelAndView view = new ModelAndView("success");
+			ModelAndView view = new ModelAndView("redirect:/user/index");
 			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 			SecurityUtils.getSubject().login(token);
 			SavedRequest path = WebUtils.getSavedRequest(request);
 			if (!StringUtils.isEmpty(path))
-				view.setViewName("redirect:" + path.getRequestUrl());
+				view.setViewName("redirect:/" + path.getRequestUrl());
 			return view;
 		} catch (IncorrectCredentialsException e) {
-			ModelAndView view = new ModelAndView("user/login");
+			ModelAndView view = new ModelAndView("user/loginview");
+			view.addObject("tips", "*账号密码不正确！");
+			view.addObject("username", username);
+			view.addObject("password", password);
 			return view;
 		}
 	}
@@ -82,7 +85,7 @@ public class UserController {
 	}
 
 	/** 判断账号是否存在 */
-	@RequestMapping(value = "/isexitsname", method = RequestMethod.GET)
+	@RequestMapping(value = "/isexistname")
 	public boolean isExistName(String name) {
 		map = AppUtils.getMap("username", name);
 		if (userBiz.findInfoUser(map) == null)
@@ -91,7 +94,7 @@ public class UserController {
 	}
 
 	/** 判断邮箱是否存在 */
-	@RequestMapping(value = "/isexitsmail", method = RequestMethod.GET)
+	@RequestMapping(value = "/isexistmail")
 	public boolean isExistMail(String mail) {
 		map = AppUtils.getMap("emailbox", mail);
 		if (userBiz.findInfoUser(map) == null)
@@ -100,7 +103,7 @@ public class UserController {
 	}
 
 	/** 判断账号和邮箱 */
-	@RequestMapping(value = "/checknamemail", method = RequestMethod.GET)
+	@RequestMapping(value = "/checknamemail")
 	public boolean checkNameMail(String name, String mail) {
 		map = AppUtils.getMap("username", name, "emailbox", mail);
 		if (userBiz.findInfoUser(map) == null)
@@ -139,13 +142,14 @@ public class UserController {
 		return view;
 	}
 
-	@RequestMapping(value = "/sendmail", method = RequestMethod.GET)
+	@RequestMapping(value = "/sendmail")
 	public String sendMail(String mail) {
 		String regs = "\\w+@(\\w+.)+[a-z]{2,3}";
 		Pattern pattern = Pattern.compile(regs);
 		Matcher matcher = pattern.matcher(mail);
 		String code = null;
 		if (matcher.matches()) {
+			System.out.println(code);
 			code = 100000 + (int) (Math.random() * 899999) + "";
 			userBiz.sendMail(mail, code);
 		}
