@@ -69,7 +69,6 @@ public class UserBizImpl implements UserBiz {
 	@Async
 	public void sendMail(String mail, String code) {
 		try {
-			System.out.println(mail + code);
 			MimeMessage mimeMessage = sender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 			helper.setFrom("2770471187@qq.com");

@@ -29,6 +29,7 @@ public class UserController {
 	@Resource
 	private UserBiz userBiz;
 
+	public static String temp = null;
 	private Map<String, Object> map = null;
 
 	/** 用户注册 */
@@ -75,12 +76,12 @@ public class UserController {
 	}
 
 	/** 退出登录 */
-	@RequestMapping(value = "leave", method = RequestMethod.GET)
+	@RequestMapping(value = "/leave", method = RequestMethod.GET)
 	public ModelAndView leave() {
 		ModelAndView view = new ModelAndView();
 		view.setViewName("redirect:/user/login");
 		SecurityUtils.getSubject().logout();
-		// AppUtils.removeSession("user");
+		AppUtils.removeMap("user");
 		return view;
 	}
 
@@ -115,12 +116,24 @@ public class UserController {
 	/** 修改密码 */
 	@RequestMapping(value = "/updatepass", method = RequestMethod.POST)
 	public boolean updatePass(String oldpass, String newpass) {
+		User user = (User) AppUtils.pullMap("user");
+		if (user.getPassword().equals(oldpass)) {
+			user.setPassword(newpass);
+			userBiz.updateUser(user);
+			return true;
+		}
 		return false;
 	}
 
 	/** 修改邮箱 */
 	@RequestMapping(value = "/updatemail", method = RequestMethod.POST)
 	public boolean updateMail(String mail, String code) {
+		User user = (User) AppUtils.pullMap("user");
+		if (code != null && code.equals(temp)) {
+			user.setEmailbox(mail);
+			userBiz.updateUser(user);
+			return true;
+		}
 		return false;
 	}
 
@@ -147,12 +160,11 @@ public class UserController {
 		String regs = "\\w+@(\\w+.)+[a-z]{2,3}";
 		Pattern pattern = Pattern.compile(regs);
 		Matcher matcher = pattern.matcher(mail);
-		String code = null;
+		temp = 100000 + (int) (Math.random() * 899999) + "";
 		if (matcher.matches()) {
-			System.out.println(code);
-			code = 100000 + (int) (Math.random() * 899999) + "";
-			userBiz.sendMail(mail, code);
+			userBiz.sendMail(mail, temp);
+			return temp;
 		}
-		return code;
+		return null;
 	}
 }
