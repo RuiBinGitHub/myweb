@@ -3,21 +3,58 @@
   <head>
     <title>项目首页</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="/web/js/jquery-1.9.1.min.js"></script> 
+    <!-- <script type="text/javascript" src="/web/js/message.js"></script> -->
+    <script type="text/javascript" src="/web/js/showtips.js"></script>
+    <script type="text/javascript" src="/web/js/user/index.js"></script> 
     <script type="text/javascript">
-    	/* var count = 0;
-    	var source=new EventSource("/web/test/getdate");
-    	source.onerror = function (event) {
-    		console.log(event);
-        };
-    	source.onmessage = function(event)	{
-    		document.getElementById("result").innerHTML+=event.data + "<br>";
-    		if (++count > 5)
-    			source.close();
-    	}; */
+    	// showTips("error","111");
+    	
+	    function showTips(type, text) {
+			$.message({
+				type:type,
+				message:text,
+				duration:2000
+			})
+		}
     </script>
+    <style type="text/css">
+    	#show{
+	    	min-width:400px;
+	    	min-height:55px;
+	    	left:50%;top:20%;
+	    	color:#67C23A;
+	    	text-indent:10px;
+	    	line-height:54px;
+	    	transform:translateX(-50%);
+	    	background-color:#F0F9EB;
+	    	border:1px solid #EBEEF5;
+	    	position:fixed;
+	    	z-index:2000;
+    	}
+    	#show a{
+    		width:25px;
+    		height:25px;
+    		color:#fff;
+    		margin-top:15px;
+    		margin-left:15px;
+    		line-height:25px;
+    		background-color:#67C23A;
+    		border-radius:100%;
+    		float:left;
+    	}
+    	#show span{
+    		float:left;
+    	}
+    </style>
   </head>
   <body>
-    <div id="result"></div>
+    <input type="button" value="QQ"/>
+    <input type="button" value="QQ"/>
+    <input type="button" value="QQ"/>
+    <input type="button" value="QQ"/>
+    
+    <div id="show"><a>!</a><span>提示信息六六六</span></div>
   </body>
 
 </html>
