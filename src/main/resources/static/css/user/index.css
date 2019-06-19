@@ -1,1 +1,32 @@
 @CHARSET "UTF-8";
+
+#show {
+	min-width: 400px;
+	min-height: 55px;
+	left: 50%;
+	top: 20%;
+	color: #67C23A;
+	text-indent: 10px;
+	line-height: 54px;
+	transform: translateX(-50%);
+	background-color: #F0F9EB;
+	border: 1px solid #8cd369;
+	position: fixed;
+	z-index: 2000;
+}
+
+#show a {
+	width: 25px;
+	height: 25px;
+	color: #fff;
+	margin-top: 15px;
+	margin-left: 15px;
+	line-height: 25px;
+	background-color: #67C23A;
+	border-radius: 100%;
+	float: left;
+}
+
+#show span {
+	float: left;
+}
