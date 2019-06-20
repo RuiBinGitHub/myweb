@@ -1,23 +1,25 @@
 $(document).ready(function() {
-	$("input[value=QQ]").click(function() {
-		// $.message({
-		// type:"info",
-		// message:"text"
-		// });
-
-		var html = "<div id='showTips'><a>!</a><span>zhansgan</span></div>";
-		$("body").append(html);
-		$("#showTips").css({
-			"width" : "400px",
-			"height" : "55px",
-			"left" : "50%",
-			"top" : "20%",
-			"text-indent" : "",
-			"line-height" : "55px",
-			"transform" : "translateX(-50%)",
-			"position" : "fixed",
-			"z-index" : "2000"
+	$("input[value=QQ]:eq(0)").click(function() {
+		$.message({
+			type : "info",
+			message : "请输入正确的号码！"
 		});
-		$("#showTips").css({{"background-color":"#F0F9EB;");
+	});
+
+	$("input[value=QQ]:eq(1)").click(function() {
+		$.message({
+			type : "success",
+			message : "请输入正确的号码！"
+		});
+	});
+
+	$("input[value=QQ]:eq(2)").click(function() {
+		$.message({
+			type : "failure",
+			message : "请输入正确的号码！"
+		});
+	});
+	$("input[value=QQ]:eq(3)").click(function() {
+		$.message("failure", "请输入正确的号码请输入正确的号码请输入正确的号码请输入正确的号码请输入正确的号码！");
 	});
 });

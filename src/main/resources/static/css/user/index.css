@@ -1,11 +1,17 @@
 @CHARSET "UTF-8";
 
+body span {
+	font-size: 20px;
+	font-weight: normal;
+}
+
 #show {
 	min-width: 400px;
 	min-height: 55px;
 	left: 50%;
-	top: 20%;
+	top: 50%;
 	color: #67C23A;
+	font-size:16px;
 	text-indent: 10px;
 	line-height: 54px;
 	transform: translateX(-50%);
@@ -22,11 +28,12 @@
 	margin-top: 15px;
 	margin-left: 15px;
 	line-height: 25px;
-	background-color: #67C23A;
+	background-color: #fab6b6;
 	border-radius: 100%;
 	float: left;
 }
 
 #show span {
+	font-size:16px;
 	float: left;
 }
